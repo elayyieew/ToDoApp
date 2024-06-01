@@ -89,14 +89,14 @@ class NoteController extends Controller
     {
         $request->validate([
             'title' => 'required|string',
-            'description' => 'required|string',
+            'content' => 'required|string',
             'status' => 'required|in:active,finished', 
         ]);
 
         try {
             $note = Note::findOrFail($id);
             $note->title = $request->title;
-            $note->description = $request->description;
+            $note->content = $request->content;
             $note->status = $request->status;
             $note->save();
 
